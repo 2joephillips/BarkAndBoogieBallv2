@@ -3,8 +3,9 @@
 <head>
     <base href="/">
     <meta charset="UTF-8">
-    <title>Todo</title>
+    <title>Bark and Boogie Ball</title>
     <script type="application/javascript" src="<% elixir('js/all.js') %>"></script>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/css/app.css"/>
     <link rel="stylesheet" href="<% elixir('css/all.css') %>"/>
 </head>
@@ -19,12 +20,25 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">Todos</a>
+            <a class="navbar-brand" href="/">Bark and Boogie Ball</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li ng-class="{active:isActive('/todos')}"><a href="/todos">List Todos</a></li>
-                <li ng-class="{active:isActive('/todos/create')}"><a href="/todos/create">Create Todo</a></li>
+                <li ng-class="{active:isActive('/todos')}"><a href="/todos">Home</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Manage <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="/auctionItems">Auction Items</a></li>
+                        <li class="divider"></li>
+                        <li><a href="/attendees">Attendees</a></li>
+                        <li class="divider"></li>
+                        <li><a href="/seats">Seats</a></li>
+                    </ul>s
+                </li>
+                <li ng-class="{active:isActive('/checkin')}"><a href="/checkin">Check In</a></li>
+                <li ng-class="{active:isActive('/checkout')}"><a href="/checkout">Check Out</a></li>
+            </ul>
+            <ul class="nav navbar-nav pull-right">
                 <li ng-if="authenticatedUser == null" ng-class="{active:isActive('/auth/signup')}"><a href="/auth/signup">Sign Up</a></li>
                 <li ng-if="authenticatedUser == null" ng-class="{active:isActive('/auth/login')}"><a href="/auth/login">Log in</a></li>
                 <li ng-if="authenticatedUser != null" ng-class="{active:isActive('/users/view/' + authenticatedUser.id)}"><a ng-href="/users/view/{{authenticatedUser.id}}">{{authenticatedUser.username}}</a></li>
