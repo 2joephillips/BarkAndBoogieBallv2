@@ -25,7 +25,8 @@ elixir(function (mix) {
       'appRoutes.js',
       'controllers/**/*.js',
       'services/**/*.js',
-      'directives/**/*.js'
+      'directives/**/*.js',
+          'dirPagination.js'
     ])
     .version([
       'css/all.css',

@@ -8,4 +8,10 @@ class Attendee extends Model
 {
     protected $fillable = array('seat_id','lastname','firstname',
         'phone','email','paidinfull', 'balance','notes');
+
+    protected $guarded = array('*');
+
+    public function seat() {
+        return $this->belongsTo('Seat');
+    }
 }

@@ -30,9 +30,9 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="item in items | filter:search:strict">
+                <tr dir-paginate="item in items | filter:search:strict | itemsPerPage: 25">
                     <td>{{ item.itemId }}</td>
-                    <td>{{ item.nameOfActionItem }}</td>
+                    <td>{{ item.nameOfActionItem | limitTo: 25}}{{item.nameOfActionItem.length > 25 ? '...' : ''}}</td>
                     <td>{{ item.auctionDescription | limitTo: 50 }}{{item.auctionDescription.length > 50 ? '...' : ''}}</td>
                     <td>{{ item.auctionDonor }}</td>
                     <td>
@@ -44,6 +44,8 @@
                 </tbody>
             </table>
         </div>
+
+        <dir-pagination-controls></dir-pagination-controls>
     </div>
 
 </div>

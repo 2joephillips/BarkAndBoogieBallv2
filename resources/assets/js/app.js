@@ -10,6 +10,7 @@ angular.module('todoApp', [
     'AuctionItemController',
   'UserService',
   'TodoService',
-    'AuctionItemService'
+    'AuctionItemService',
+    'angularUtils.directives.dirPagination'
 ]);
 

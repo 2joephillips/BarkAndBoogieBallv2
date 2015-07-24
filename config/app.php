@@ -199,6 +199,9 @@ return [
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
 		'JWTAuth'   => 'Tymon\JWTAuth\Facades\JWTAuth',
+        'Lexer' 			=> 'Goodby\CSV\Import\Standard\Lexer',
+        'Interpreter' 		=> 'Goodby\CSV\Import\Standard\Interpreter',
+        'LexerConfig' 		=> 'Goodby\CSV\Import\Standard\LexerConfig',
 
 	],
 
