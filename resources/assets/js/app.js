@@ -8,9 +8,11 @@ angular.module('todoApp', [
   'TodoController',
   'UserController',
     'AuctionItemController',
+    'AttendeeController',
   'UserService',
   'TodoService',
     'AuctionItemService',
+    'AttendeeService',
     'angularUtils.directives.dirPagination'
 ]);
 

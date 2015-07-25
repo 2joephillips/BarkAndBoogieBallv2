@@ -70,6 +70,5 @@ crashlytics.properties
 crashlytics-build.properties
 composer.lock
 
-*.csv
-
+# remove loader files
 *.csv

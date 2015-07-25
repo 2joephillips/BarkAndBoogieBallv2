@@ -5,10 +5,18 @@ namespace Todo\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Todo\Http\Requests;
-use Todo\Http\Controllers\Controller;
+use Todo\Attendee;
 
 class AttendeeController extends Controller
 {
+
+    private $request;
+
+    function _construct(Request $request)
+    {
+        $this->request = $request;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +24,7 @@ class AttendeeController extends Controller
      */
     public function index()
     {
-        return AuctionItem::all();
+        return Attendee::with('seat')->get();
     }
 
     /**
