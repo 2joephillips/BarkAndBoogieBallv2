@@ -1,5 +1,4 @@
 <div ng-controller="AttendeeController" ng-init="find()">
-
     <div class="row">
         <h1>Attendees {{ attendees.length }}
             <a class="btn btn-small btn-success" href="/attendees/create">Add Auction Item</a>
@@ -34,12 +33,13 @@
                     <td>{{ attendee.firstname }}</td>
                     <td>
                         <a ng-href="/attendees/edit/{{attendee.id}}" class="btn btn-small btn-info"><i class="fa fa-edit"></i>Edit</a>
-                        <a class="btn btn-small btn-danger" ng-click="remove(item)"><i class="fa fa-trash"></i>Delete</a>
+                        <a class="btn btn-small btn-danger" ng-click="remove(attendee)"><i class="fa fa-trash"></i>Delete</a>
                     </td>
 
                 </tr>
                 </tbody>
             </table>
+
         </div>
         <dir-pagination-controls></dir-pagination-controls>
     </div>

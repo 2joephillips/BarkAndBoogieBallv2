@@ -26,7 +26,10 @@ elixir(function (mix) {
       'controllers/**/*.js',
       'services/**/*.js',
       'directives/**/*.js',
-          'dirPagination.js'
+          'dirPagination.js',
+          'ui-bootstrap.js',
+          'ui-bootstrap-tpls.js'
+
     ])
     .version([
       'css/all.css',

@@ -88,6 +88,7 @@ class AttendeeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $attendee = Attendee::find($id);
+        $attendee->delete();
     }
 }

@@ -13,6 +13,8 @@ angular.module('todoApp', [
   'TodoService',
     'AuctionItemService',
     'AttendeeService',
-    'angularUtils.directives.dirPagination'
+    'angularUtils.directives.dirPagination',
+    'ui.bootstrap',
+    'ModalService'
 ]);
 
