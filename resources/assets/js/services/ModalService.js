@@ -5,7 +5,7 @@ angular.module('ModalService', []).service('Modal', ['$modal',
             backdrop: true,
             keyboard: true,
             modalFade: true,
-            templateUrl: 'modal.html'
+            templateUrl: '/partials/attendees/modal'
         };
 
         var modalOptions = {
@@ -29,7 +29,7 @@ angular.module('ModalService', []).service('Modal', ['$modal',
             //Map angular-ui modal custom defaults to modal defaults defined in service
             angular.extend(tempModalDefaults, modalDefaults, customModalDefaults);
 
-            //Map modal.html $scope custom properties to defaults defined in service
+            //Map modal.php $scope custom properties to defaults defined in service
             angular.extend(tempModalOptions, modalOptions, customModalOptions);
 
             if (!tempModalDefaults.controller) {

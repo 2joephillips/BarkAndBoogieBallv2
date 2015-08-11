@@ -9,13 +9,26 @@ angular.module('AttendeeController', []).controller('AttendeeController', ['$sco
 
             var modalOptions = {
                 closeButtonText: 'Cancel',
-                actionButtonText: 'Delete Customer',
-                headerText: 'Delete ?',
-                bodyText: 'Are you sure you want to delete this customer?'
+                actionButtonText: 'Delete Attendee',
+                headerText: 'Delete '+ attendee.firstname + ' ' + attendee.lastname + ' ?',
+                bodyText: 'Are you sure you want to delete this attendee?'
             };
 
-            Modal.showModal({}, modalOptions).then(
+            Modal.showModal({}, modalOptions).then( function(result) {
+                    attendee.$remove(function (res) {
+                        if (res) {
+                            for (var i in $scope.attendees) {
+                                if ($scope.attendees[i] === attendee) {
+                                    $scope.attendees.splice(i, 1);
+                                }
+                            }
+                        }
+                    }, function (err) {
+                        console.log(err);
+                    })
+                }
            )
+
         };
 
     }

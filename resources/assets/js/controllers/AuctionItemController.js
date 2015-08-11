@@ -1,5 +1,5 @@
-angular.module('AuctionItemController', []).controller('AuctionItemController', ['$scope', '$location', '$routeParams', 'AuctionItem',
-  function ($scope, $location, $routeParams, AuctionItem) {
+angular.module('AuctionItemController', []).controller('AuctionItemController', ['$scope', '$location', '$routeParams', 'AuctionItem', 'Modal',
+  function ($scope, $location, $routeParams, AuctionItem, Modal) {
     $scope.create = function () {
       var item = new AuctionItem({
           nameOfActionItem: this.nameOfActionItem,
@@ -23,16 +23,26 @@ angular.module('AuctionItemController', []).controller('AuctionItemController', 
     };
 
       $scope.remove = function (item) {
-          item.$remove(function (res) {
-              if (res) {
-                  for (var i in $scope.items) {
-                      if ($scope.items[i] === item) {
-                          $scope.items.splice(i, 1);
+
+          var modalOptions = {
+              closeButtonText: 'Cancel',
+              actionButtonText: 'Delete Item',
+              headerText: 'Delete '+ item.nameOfActionItem + ' ?',
+              bodyText: 'Are you sure you want to delete this item?'
+          };
+
+          Modal.showModal({}, modalOptions).then( function(result){
+              item.$remove(function (res) {
+                  if (res) {
+                      for (var i in $scope.items) {
+                          if ($scope.items[i] === item) {
+                              $scope.items.splice(i, 1);
+                          }
                       }
                   }
-              }
-          }, function (err) {
-              console.log(err);
+              }, function (err) {
+                  console.log(err);
+              })
           })
       };
 

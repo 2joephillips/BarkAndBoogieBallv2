@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Attendee extends Model
 {
-    protected $fillable = array('seat_id','lastname','firstname','company',
+    protected $fillable = array('lastname','firstname','company',
         'phone','email','paidinfull', 'balance','notes');
 
 
     public function seat() {
-        return $this->belongsTo('Todo\Seat');
+        return $this->hasOne('Todo\Seat');
     }
 }

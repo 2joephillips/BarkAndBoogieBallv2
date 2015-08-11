@@ -17,8 +17,8 @@ class DatabaseSeeder extends Seeder
     {
         Model::unguard();
         $this->call('UploadAuctionItemSeeder');
-        $this->call('UploadTableSeeder');
-        $this->call('UploadAttendeesSeeder');
+        //$this->call('UploadTableSeeder');
+        //$this->call('UploadAttendeesSeeder');
     }
 }
 
@@ -56,7 +56,7 @@ class UploadAuctionItemSeeder extends Seeder
 
                     ));
 
-                $this->command->info("Added " . $row[1] . "item and attached to an attendee.");
+                $this->command->info("Added " . $row[1] . " item and.");
             });
 
         $fileName = $this->getDir() . '/Auction Items.csv';
