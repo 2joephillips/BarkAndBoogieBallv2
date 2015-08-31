@@ -5,10 +5,18 @@ namespace Todo\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Todo\Http\Requests;
-use Todo\Http\Controllers\Controller;
+use Todo\Seat;
 
 class SeatController extends Controller
 {
+
+    private $request;
+
+    function _construct(Request $request)
+    {
+        $this->request = $request;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +24,7 @@ class SeatController extends Controller
      */
     public function index()
     {
-        //
+        return Seat::with('attendee')->get();
     }
 
     /**
@@ -81,5 +89,11 @@ class SeatController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function emptySeat()
+    {
+         return Seat::where('attendee_id','')->get();
+
     }
 }

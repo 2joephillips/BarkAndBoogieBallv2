@@ -17,7 +17,8 @@ class CreateSeatsTable extends Migration
             $table->increments('id');
             $table->string('table_number');
             $table->string('seat_number');
-            $table->integer('attendees_id');
+            $table->string('auctionId');
+            $table->integer('attendee_id');
             $table->timestamps();
         });
     }

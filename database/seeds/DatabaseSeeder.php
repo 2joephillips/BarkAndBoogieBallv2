@@ -17,8 +17,8 @@ class DatabaseSeeder extends Seeder
     {
         Model::unguard();
         $this->call('UploadAuctionItemSeeder');
-        //$this->call('UploadTableSeeder');
-        //$this->call('UploadAttendeesSeeder');
+        $this->call('UploadTableSeeder');
+        $this->call('UploadAttendeesSeeder');
     }
 }
 
@@ -86,7 +86,8 @@ class UploadTableSeeder extends Seeder
                     array(
                         'table_number'  => $row[0],
                         'seat_number'   => $row[1],
-                        'auction_id'    => $row[2]
+                        'auctionId'     => $row[2]
+
                     ));
 
                 $this->command->info("Added Auction Id for seat and table" . $row[2]);
@@ -107,16 +108,12 @@ class UploadAttendeesSeeder extends Seeder
 
     public function run()
     {
-        DB::table('attendees')->delete();
-        Attendee::truncate();
-
         $Attendees = array();
         $lexer = new Lexer(new LexerConfig());
         $interpreter = new Interpreter();
         $interpreter->addObserver(
             function (array $row) use ($Attendees) {
-                $seat = Seat::where('auction_id', '=', $row[0])->first();
-                $ItemOne = Attendee::create(
+                $ItemOne = \Todo\Attendee::create(
                     array(
                         'company' 		=> $row[1],
                         'lastname' 		=> $row[2],
@@ -124,15 +121,12 @@ class UploadAttendeesSeeder extends Seeder
                         'phone' 		=> $row[4],
                         'email' 		=> $row[5],
                         'paidinfull' 	=> $row[6],
-                        'notes' 		=> $row[7],
-                        'seat_id'		=> $seat->id
+                        'notes' 		=> $row[7]
                     )
                 );
-
-                $this->command->info("Added " . $row[1] ." " . $seat. "item and attached to attendee");
+                $this->command->info("Added " . $row[1] . "item and attached to attendee");
             }
         );
-
         $fileName = $this->getDir() . '/Attendees.csv';
         $lexer->parse($fileName, $interpreter);
     }
