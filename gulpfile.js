@@ -25,6 +25,7 @@ elixir(function (mix) {
       'appRoutes.js',
       'controllers/**/*.js',
       'services/**/*.js',
+          'filters/**/**.js',
       'directives/**/*.js',
           'dirPagination.js',
           'ui-bootstrap.js',

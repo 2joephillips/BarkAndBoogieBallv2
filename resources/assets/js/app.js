@@ -4,6 +4,8 @@ angular.module('todoApp', [
   'ngStorage',
   'appRoutes',
   'enterStroke',
+    'tel',
+    'inputPhone',
   'MainController',
   'TodoController',
   'UserController',
