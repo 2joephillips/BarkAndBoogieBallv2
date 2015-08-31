@@ -82,9 +82,20 @@ class AuctionItemController extends Controller
     public function update($id)
     {
         $item = AuctionItem::find($id);
-        $data = Request::all();
+
+        $item->nameOfActionItem = $this->request->input('nameOfActionItem');
+        $item->auctionDescription = $this->request->input('auctionDescription');
+        $item->auctionValue = $this->request->input('auctionValue');
+        $item->auctionDonor = $this->request->input('auctionDonor');
+        $item->auctionNotes = $this->request->input('auctionNotes');
+        if (!$item->save()) {
+            abort(500, "Saving failed");
+        }
+        return $item;
+        /*$data = Request::all();
         $item->fill($data);
         $item->save();
+        return $item;*/
     }
 
     /**

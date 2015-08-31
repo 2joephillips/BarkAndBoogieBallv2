@@ -7,11 +7,12 @@
         </h1>
         <div class="form-group">
             <div class="col-md-3">
-                Search by Item Id:<input class="form-control input-md" ng-model="search.itemId">
+                <h5>Search by Item Id:</h5><input type="text" class="form-control input-md" ng-model="search.itemId">
              </div>
             <div class="col-md-3">
-                Search by Item Name: <input class="form-control input-md" ng-model="search.nameOfActionItem">
+                <h5>Search by Item Name:</h5> <input class="form-control input-md" ng-model="search.nameOfActionItem">
             </div>
+
         </div>
     </div>
     <h1 ng-if="!items.length">

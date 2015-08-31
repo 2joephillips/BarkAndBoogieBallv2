@@ -8,11 +8,9 @@ angular.module('AuctionItemController', []).controller('AuctionItemController', 
           auctionValue: this.auctionValue,
           auctionDonor: this.auctionDonor,
           auctionNotes: this.auctionNotes
-
       });
         item.$save(function (res) {
         $location.path('auctionitems/view/' + res.id);
-        $scope.body = '';
       }, function (err) {
         console.log(err);
       });
@@ -44,6 +42,14 @@ angular.module('AuctionItemController', []).controller('AuctionItemController', 
                   console.log(err);
               })
           })
+      };
+
+      $scope.update = function(item) {
+        item.$update(function(res) {
+            $location.path('auctionitems/');
+          }, function (err) {
+              console.log(err);
+          });
       };
 
       $scope.findOne = function () {
