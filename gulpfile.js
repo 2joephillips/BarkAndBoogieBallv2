@@ -29,7 +29,8 @@ elixir(function (mix) {
       'directives/**/*.js',
           'dirPagination.js',
           'ui-bootstrap.js',
-          'ui-bootstrap-tpls.js'
+          'ui-bootstrap-tpls.js',
+          'fcsaNumber.js'
 
     ])
     .version([
