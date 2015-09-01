@@ -5,7 +5,7 @@
         </h1>
         <div class="form-group">
             <div class="col-md-3">
-                Search by Company Name:<input class="form-control input-md" ng-model="search.company">
+                Search by Company/Party Name:<input class="form-control input-md" ng-model="search.company">
             </div>
             <div class="col-md-3">
                 Search by Last Name: <input class="form-control input-md" ng-model="search.lastname">
@@ -19,9 +19,9 @@
         <div class="table-responsive">
             <table class="table table-striped table-hover table-condensed">
                 <thead>
-                <tr>
+                <tr >
                     <th>Auction ID</th>
-                    <th>Company</th>
+                    <th>Company/Party Name</th>
                     <th>Last Name</th>
                     <th>First Name</th>
                     <th>Table</th>
@@ -30,9 +30,9 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr dir-paginate="attendee in attendees | filter:search:strict | itemsPerPage: 25">
-                    <td>{{ attendee.seat.auction_id }} </td>
-                    <td>{{ attendee.company }}</td>
+                <tr dir-paginate="attendee in attendees | filter:search:strict | itemsPerPage: 25" ng-class="{danger: attendee.paidinfull == false}">
+                    <td>{{ attendee.seat.auctionId}} </td>
+                    <td>{{ attendee.company  }}</td>
                     <td>{{ attendee.lastname }}</td>
                     <td>{{ attendee.firstname }}</td>
                     <td>{{ attendee.seat.table_number }}</td>

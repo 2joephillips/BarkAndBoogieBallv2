@@ -6,7 +6,7 @@ angular.module('todoApp', [
   'enterStroke',
     'tel',
     'inputPhone',
-  'MainController',
+    'MainController',
   'TodoController',
   'UserController',
     'AuctionItemController',
@@ -16,6 +16,7 @@ angular.module('todoApp', [
     'AuctionItemService',
     'AttendeeService',
     'angularUtils.directives.dirPagination',
+    'fcsa-number',
     'ui.bootstrap',
     'ModalService'
 ]);
