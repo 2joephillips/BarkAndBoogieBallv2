@@ -15,9 +15,12 @@ angular.module('todoApp', [
   'TodoService',
     'AuctionItemService',
     'AttendeeService',
+    'SeatService',
     'angularUtils.directives.dirPagination',
     'fcsa-number',
+    'ui.filters',
     'ui.bootstrap',
-    'ModalService'
+    'ModalService',
+    'excludeValue'
 ]);
 

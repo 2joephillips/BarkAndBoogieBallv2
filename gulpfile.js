@@ -30,7 +30,6 @@ elixir(function (mix) {
           'dirPagination.js',
           'ui-bootstrap.js',
           'ui-bootstrap-tpls.js',
-          'fcsaNumber.js'
 
     ])
     .version([

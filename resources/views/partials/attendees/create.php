@@ -72,29 +72,36 @@
             <div class="form-group">
                 <div class="col-md-5">
                     <label>
-                        Paid In Full: //Add buttons
+                        Paid In Full:
                     </label>
                     <div class="input-group">
-                        <span class="input-group-addon">$</span>
-                        <input class="form-control input-md"  fcsa-number name="balanceDue" type="text"  placeholder="100"
-                               ng-model="balance" ng-required="true" >
+                        <div class="btn-group">
+                            <label class="btn btn-primary" ng-model="paid" ng-change="togglePaid()" btn-radio="1">Yes</label>
+                            <label class="btn btn-primary" ng-model="paid" ng-change="togglePaid()" btn-radio="0">No</label>
+                        </div>
                     </div>
-                        <span style="color:red" ng-show="createForm.balanceDue.$dirty && createForm.balanceDue.$invalid && createForm.balanceDue.$error.required">
-                              * Value Required:
-                        </span>
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-5" ng-if="showBalance">
                     <label>
                         Balance Due:
                     </label>
                     <div class="input-group">
                         <span class="input-group-addon">$</span>
-                        <input class="form-control input-md"  fcsa-number name="balanceDue" type="text"  placeholder="100"
-                               ng-model="balance" ng-required="true" >
+                        <input class="form-control input-md"  fcsa-number name="balance" type="text"  placeholder="100"
+                               ng-model="$parent.balance" ng-required="true" >
                     </div>
                         <span style="color:red" ng-show="createForm.balanceDue.$dirty && createForm.balanceDue.$invalid && createForm.balanceDue.$error.required">
                               * Value Required:
                         </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <label>
+                        Select Table and Seat:
+                    </label>
+                    <select ng-model="table" ng-options="option.table_number for option in availableSeats | unique:'table_number'"></select>
+                    <select ng-model="seat" ng-options="option.seat_number for option in availableSeats | excludeValue:table"></select>
                 </div>
             </div>
             <div class="form-group">
@@ -114,4 +121,8 @@
             </div>
         </fieldset>
     </form>
+<pre>
+     {{ seat | json }}
+</pre>
+
 </div>

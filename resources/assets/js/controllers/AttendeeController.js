@@ -1,6 +1,24 @@
-angular.module('AttendeeController', []).controller('AttendeeController', ['$scope', '$location', '$routeParams', 'Attendee', 'Modal',
-    function ($scope, $location, $routeParams, Attendee, Modal){
-        
+angular.module('AttendeeController', []).controller('AttendeeController', ['$scope', '$http', '$location', '$routeParams', 'Attendee', 'Modal', 'Seat',
+    function ($scope, $http, $location, $routeParams, Attendee, Modal, Seat){
+
+
+        $scope.paid = 0;
+        $scope.showBalance = true;
+
+
+        $scope.togglePaid = function() {
+            if ($scope.paid == 1) {
+                $scope.showBalance = false;
+                $scope.prevBalance = $scope.balance;
+                $scope.balance = 0;
+            }
+            else if ($scope.paid == 0) {
+                $scope.showBalance = true;
+                $scope.balance = $scope.prevBalance;
+
+            }
+        }
+
         $scope.find = function() {
             $scope.attendees = Attendee.query();
         }
@@ -30,6 +48,16 @@ angular.module('AttendeeController', []).controller('AttendeeController', ['$sco
            )
 
         };
+
+        activate()
+
+        function activate() {
+              Seat.emptySeat().$promise.then(function(data) {
+                $scope.availableSeats = data;
+            });
+        }
+
+
 
     }
 ]);
