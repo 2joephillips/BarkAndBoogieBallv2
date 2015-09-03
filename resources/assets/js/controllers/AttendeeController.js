@@ -1,23 +1,59 @@
 angular.module('AttendeeController', []).controller('AttendeeController', ['$scope', '$http', '$location', '$routeParams', 'Attendee', 'Modal', 'Seat',
     function ($scope, $http, $location, $routeParams, Attendee, Modal, Seat){
+        $scope.create = function () {
+            var person = new Attendee({
+                company: this.company,
+                lastname: this.lastName,
+                firstname: this.firstName,
+                phone: this.phone,
+                email: this.email,
+                balance: this.balance ,
+                paidinfull: this.paid ,
+                notes: this.notes
+            });
 
+            person.$save(function (res) {
+                $location.path('attendees/');
+            }, function (err) {
+                console.log(err);
+            });
+        };
 
         $scope.paid = 0;
         $scope.showBalance = true;
+        $scope.selectedTable = 0;
+        $scope.selectedSeat = 0;
 
+        $scope.setTableFocus = setTableFocus;
+        $scope.setSeatFocus = setSeatFocus;
 
-        $scope.togglePaid = function() {
-            if ($scope.paid == 1) {
+        $scope.togglePaid = function(status) {
+            if (status == 1) {
                 $scope.showBalance = false;
                 $scope.prevBalance = $scope.balance;
                 $scope.balance = 0;
             }
-            else if ($scope.paid == 0) {
+            else if (status == 0) {
                 $scope.showBalance = true;
                 $scope.balance = $scope.prevBalance;
 
             }
         }
+
+        $scope.togglePaid = function(status, balance) {
+            if (status == 1) {
+                $scope.showBalance = false;
+                $scope.prevBalance = balance;
+                $scope.balance = 0;
+            }
+            else if (status == 0) {
+                $scope.showBalance = true;
+                $scope.balance = $scope.prevBalance;
+
+            }
+            $scope.attendee.balance = $scope.balance;
+        }
+
 
         $scope.find = function() {
             $scope.attendees = Attendee.query();
@@ -49,6 +85,20 @@ angular.module('AttendeeController', []).controller('AttendeeController', ['$sco
 
         };
 
+        $scope.findOne = function () {
+            var splitPath = $location.path().split('/');
+            var personId = splitPath[splitPath.length - 1];
+            $scope.attendee = Attendee.get({personId: personId});
+
+            if($scope.attendee.paidinfull == 1) {
+                $scope.showBalance = true;
+            }
+            else
+            {
+                $scope.showBalance = false;
+            }
+        };
+
         activate()
 
         function activate() {
@@ -57,6 +107,15 @@ angular.module('AttendeeController', []).controller('AttendeeController', ['$sco
             });
         }
 
+        function setTableFocus(focus) {
+            $scope.selectedTable  = focus.table_number;
+
+        }
+
+        function setSeatFocus(focus) {
+            $scope.selectedSeat = focus.seat_number;
+
+        }
 
 
     }

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Attendee extends Model
 {
-    protected $fillable = array('lastname','firstname',
+    protected $fillable = array('lastname','firstname', 'company',
                'phone','email','paidinfull', 'balance','notes');
 
     protected $guarded = array('*');

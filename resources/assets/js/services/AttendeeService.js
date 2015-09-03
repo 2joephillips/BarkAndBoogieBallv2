@@ -3,9 +3,9 @@ angular.module('AttendeeService', []).factory('Attendee', ['$resource',
         return $resource('/api/attendee/:personId', {
             personId: '@id'
         }, {
-            update: {
-                method: 'PUT'
-            }
-        });
-    }
+        update: {
+            method: 'PUT'
+        }
+    });
+}
 ]);

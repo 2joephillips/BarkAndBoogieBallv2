@@ -12,7 +12,7 @@ class AttendeeController extends Controller
 
     private $request;
 
-    function _construct(Request $request)
+    function __construct(Request $request)
     {
         $this->request = $request;
     }
@@ -44,7 +44,12 @@ class AttendeeController extends Controller
      */
     public function store()
     {
-        //
+        $input = $this->request->all();
+        $attendee = new Attendee($input);
+        if (!$attendee->save()) {
+            abort(500, "Saving failed.");
+        }
+        return $attendee;
     }
 
     /**
@@ -55,7 +60,8 @@ class AttendeeController extends Controller
      */
     public function show($id)
     {
-        //
+        $attendee = Attendee::with('seat')->find($id);
+        return $attendee;
     }
 
     /**

@@ -1,6 +1,10 @@
 angular.module('tel', []).filter('tel',
     function () {
-        return function (tel) {
+        return function (tel, filterOn) {
+
+            if (tel === false) {
+                return ;
+            }
 
             if (!tel) { return ''; }
 

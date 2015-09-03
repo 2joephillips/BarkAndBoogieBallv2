@@ -22,7 +22,7 @@ class CreateAttendeesTable extends Migration
             $table->string('firstname');
             $table->string('phone');
             $table->string('email');
-            $table->integer('balance');
+            $table->string('balance');
             $table->boolean('paidinfull');
             $table->longtext('notes');
             $table->timestamps();
