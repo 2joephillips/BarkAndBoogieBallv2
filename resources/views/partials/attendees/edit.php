@@ -5,7 +5,6 @@
         </h1>
     </div>
     <hr>
-    {{ attendee | json }}
     <form name="createForm" class="form-horizontal" ng-submit="update(attendee)" novalidate>
         <fieldset>
             <!-- Company -->
@@ -99,17 +98,22 @@
 
             <!-- Select Table and Seat -->
             <div class="form-group">
-                <div class="col-md-5">
+                <div class="col-md-4">
                     <label>
-                        Select Table:
+                        Current Table:
                     </label>
-                    <select class="form-control" ng-model="attendeetable" ng-options="option.table_number for option in availableSeats | unique:'table_number'"></select>
+                    <input class="form-control" ng-model="attendee.seat.table_number" readonly></input>
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-4">
                     <label>
-                        Select Seat:
+                        Current Seat:
                     </label>
-                    <select class="form-control" ng-model="seat" ng-options="option.seat_number for option in availableSeats | excludeValue:table"></select>
+                    <input class="form-control" ng-model="attendee.seat.seat_number" readonly></input>
+                </div>
+                <div class="col-md-2">
+                    <label>
+                    </label>
+                    <a class="btn btn-small btn-danger" ng-click="updateSeats()">Update</a>
                 </div>
             </div>
 

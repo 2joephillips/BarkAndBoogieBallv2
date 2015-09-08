@@ -5,7 +5,12 @@ angular.module('AttendeeService', []).factory('Attendee', ['$resource',
         }, {
         update: {
             method: 'PUT'
-        }
+        },
+            assignedAuctionItems: {
+                method: 'GET',
+                isArray: true,
+                url: '/api/attendee/assignedAuctionItems'
+            }
     });
 }
 ]);

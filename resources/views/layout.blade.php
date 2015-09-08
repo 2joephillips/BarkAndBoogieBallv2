@@ -31,12 +31,12 @@
                         <li><a href="/auctionItems">Auction Items</a></li>
                         <li class="divider"></li>
                         <li><a href="/attendees">Attendees</a></li>
-                        <li class="divider"></li>
-                        <li><a href="/seats">Seats</a></li>
+                        <!-- <li class="divider"></li>
+                        <li><a href="/seats">Seats</a></li> -->
                     </ul>s
                 </li>
-                <li ng-class="{active:isActive('/checkin')}"><a href="/checkin">Check In</a></li>
-                <li ng-class="{active:isActive('/checkout')}"><a href="/checkout">Check Out</a></li>
+                <li ng-class="{active:isActive('/checkin')}"><a href="/checkin">Check In/Out    </a></li>
+                <li ng-class="{active:isActive('/assignauctionitems')}"><a href="/assignauctionitems">Assign Auction Items</a></li>
             </ul>
             <ul class="nav navbar-nav pull-right">
                 <li ng-if="authenticatedUser == null" ng-class="{active:isActive('/auth/signup')}"><a href="/auth/signup">Sign Up</a></li>

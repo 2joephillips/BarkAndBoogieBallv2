@@ -11,6 +11,9 @@ angular.module('todoApp', [
   'UserController',
     'AuctionItemController',
     'AttendeeController',
+    'UpdateSeatController',
+    'CheckinController',
+    'AssignAuctionItemsController',
   'UserService',
   'TodoService',
     'AuctionItemService',
@@ -21,6 +24,7 @@ angular.module('todoApp', [
     'ui.filters',
     'ui.bootstrap',
     'ModalService',
+    'SendEmailService',
     'excludeValue'
 ]);
 

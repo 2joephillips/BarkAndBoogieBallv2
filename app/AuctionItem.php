@@ -19,4 +19,8 @@ class AuctionItem extends Model
         'winningBid'
     ];
 
+    public function attendee() {
+        return $this->belongsTo('Todo\Attendee');
+    }
+
 }

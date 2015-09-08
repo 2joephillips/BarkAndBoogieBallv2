@@ -6,13 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Attendee extends Model
 {
-    protected $fillable = array('lastname','firstname', 'company',
-               'phone','email','paidinfull', 'balance','notes');
+    protected $fillable = array('lastname','firstname', 'company', 'checkedIn', 'checkedOut',
+               'phone','email','paidinfull', 'balance','notes', 'seat_id');
 
-    protected $guarded = array('*');
 
     public function seat()
     {
-        return $this->hasOne('Todo\Seat');
+        return $this->belongsTo('Todo\Seat');
+    }
+
+    public function item()
+    {
+        return $this->hasMany('Todo\AuctionItem');
     }
 }

@@ -25,6 +25,7 @@ class CreateAttendeesTable extends Migration
             $table->string('balance');
             $table->boolean('paidinfull');
             $table->longtext('notes');
+            $table->integer('seat_id');
             $table->timestamps();
         });
     }

@@ -80,8 +80,8 @@
                     </label>
                     <div class="input-group">
                         <div class="btn-group">
-                            <label class="btn btn-primary" ng-model="paid" ng-change="togglePaid(paid)" btn-radio="1">Yes</label>
-                            <label class="btn btn-primary" ng-model="paid" ng-change="togglePaid(paid)" btn-radio="0">No</label>
+                            <label class="btn btn-primary" ng-model="paid" ng-change="toggleAmount(paid)" btn-radio="1">Yes</label>
+                            <label class="btn btn-primary" ng-model="paid" ng-change="toggleAmount(paid)" btn-radio="0">No</label>
                         </div>
                     </div>
                 </div>
@@ -137,4 +137,7 @@
 
         </fieldset>
     </form>
+    <pre>
+        {{ seat| json }}
+    </pre>
 </div>

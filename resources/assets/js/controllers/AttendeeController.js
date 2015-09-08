@@ -1,5 +1,5 @@
-angular.module('AttendeeController', []).controller('AttendeeController', ['$scope', '$http', '$location', '$routeParams', 'Attendee', 'Modal', 'Seat',
-    function ($scope, $http, $location, $routeParams, Attendee, Modal, Seat){
+angular.module('AttendeeController', []).controller('AttendeeController', ['$scope', '$http', '$location', '$routeParams', '$modal', 'Attendee', 'Modal', 'Seat',
+    function ($scope, $http, $location, $routeParams, $modal, Attendee, Modal, Seat){
         $scope.create = function () {
             var person = new Attendee({
                 company: this.company,
@@ -9,10 +9,12 @@ angular.module('AttendeeController', []).controller('AttendeeController', ['$sco
                 email: this.email,
                 balance: this.balance ,
                 paidinfull: this.paid ,
-                notes: this.notes
+                notes: this.notes,
+                seat_id: this.seat.id
             });
 
             person.$save(function (res) {
+
                 $location.path('attendees/');
             }, function (err) {
                 console.log(err);
@@ -20,14 +22,16 @@ angular.module('AttendeeController', []).controller('AttendeeController', ['$sco
         };
 
         $scope.paid = 0;
+        $scope.balance = 0;
         $scope.showBalance = true;
         $scope.selectedTable = 0;
         $scope.selectedSeat = 0;
 
         $scope.setTableFocus = setTableFocus;
         $scope.setSeatFocus = setSeatFocus;
+        $scope.updateSeats = updateSeats;
 
-        $scope.togglePaid = function(status) {
+        $scope.toggleAmount = function(status) {
             if (status == 1) {
                 $scope.showBalance = false;
                 $scope.prevBalance = $scope.balance;
@@ -85,18 +89,44 @@ angular.module('AttendeeController', []).controller('AttendeeController', ['$sco
 
         };
 
-        $scope.findOne = function () {
-            var splitPath = $location.path().split('/');
-            var personId = splitPath[splitPath.length - 1];
-            $scope.attendee = Attendee.get({personId: personId});
+        function updateSeats() {
 
-            if($scope.attendee.paidinfull == 1) {
-                $scope.showBalance = true;
+            var missing = true;
+            for(var i = 0; i < $scope.availableSeats.length; i++) {
+                if ($scope.availableSeats[i].id == $scope.attendee.seat_id) {
+                    missing = false;
+                }
             }
-            else
-            {
-                $scope.showBalance = false;
+
+            if (missing) {
+                $scope.availableSeats.push($scope.attendee.seat)
             }
+
+            var modalInstance = $modal.open({
+                animation: true,
+                templateUrl: '/partials/attendees/updateSeat',
+                controller: 'UpdateSeatController',
+                size: 'lg',
+                resolve: {
+                    availableSeats: function() {
+                        return $scope.availableSeats;
+                    },
+                    attendee: function() {
+                        return $scope.attendee;
+                    }
+                }
+            })
+
+
+        };
+
+        $scope.update = function(attendee) {
+            attendee.$update(function(res) {
+                $location.path('attendees/');
+            }, function (err) {
+                console.log(err);
+            });
+
         };
 
         activate()
@@ -104,6 +134,8 @@ angular.module('AttendeeController', []).controller('AttendeeController', ['$sco
         function activate() {
               Seat.emptySeat().$promise.then(function(data) {
                 $scope.availableSeats = data;
+
+
             });
         }
 
@@ -116,6 +148,12 @@ angular.module('AttendeeController', []).controller('AttendeeController', ['$sco
             $scope.selectedSeat = focus.seat_number;
 
         }
+
+        $scope.findOne = function () {
+            var splitPath = $location.path().split('/');
+            var personId = splitPath[splitPath.length - 1];
+            $scope.attendee = Attendee.get({personId: personId});
+        };
 
 
     }

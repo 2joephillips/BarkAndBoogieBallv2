@@ -53,7 +53,7 @@
                     </label>
                     <div class="input-group">
                         <span class="input-group-addon">$</span>
-                    <input class="form-control input-md" id="auctionValue" name="auctionValue" type="number"  placeholder="100"
+                    <input class="form-control input-md" id="auctionValue" fcsa-number name="auctionValue" type="text"  placeholder="100"
                            ng-model="auctionValue" value="var|currency" ng-required="true" min="1">
                     </div>
                         <span style="color:red" ng-show="createForm.auctionValue.$dirty && createForm.auctionValue.$invalid && createForm.auctionValue.$error.required">

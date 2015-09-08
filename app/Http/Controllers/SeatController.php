@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use Todo\Http\Requests;
 use Todo\Seat;
+use DB;
 
 class SeatController extends Controller
 {
@@ -93,7 +94,12 @@ class SeatController extends Controller
 
     public function emptySeat()
     {
-         return Seat::where('attendee_id','')->get();
+          $emptySeat =  Seat::select('seats.*')
+                 ->leftJoin('attendees', 'attendees.seat_id', '=', 'seats.id')
+              ->whereNull('attendees.seat_id')
+             ->get();
+
+        return $emptySeat;
 
     }
 }

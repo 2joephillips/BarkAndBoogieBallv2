@@ -33,7 +33,7 @@
                     </h5>
                     <div class="input-group">
                         <span class="input-group-addon">$</span>
-                    <input class="form-control input-md" id="auctionValue" name="auctionValue" type="text" placeholder="Enter Item Value"
+                    <input class="form-control input-md" id="auctionValue" fcsa-number  name="auctionValue" type="text" placeholder="Enter Item Value"
                            ng-model="item.auctionValue" required>
                         </div>
                 </div>

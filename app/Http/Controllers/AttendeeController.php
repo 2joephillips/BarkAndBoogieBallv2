@@ -83,7 +83,24 @@ class AttendeeController extends Controller
      */
     public function update($id)
     {
-        //
+        $attendee = Attendee::find($id);
+
+        $attendee->company = $this->request->input('company');
+        $attendee->lastname = $this->request->input('lastname');
+        $attendee->firstname = $this->request->input('firstname');
+        $attendee->phone = $this->request->input('phone');
+        $attendee->email = $this->request->input('email');
+        $attendee->balance = $this->request->input('balance');
+        $attendee->paidinfull = $this->request->input('paidinfull');
+        $attendee->notes = $this->request->input('notes');
+        $attendee->seat_id = $this->request->input('seat_id');
+        $attendee->checkedIn = $this->request->input('checkedIn');
+        $attendee->checkedOut = $this->request->input('checkedOut');
+        if (!$attendee->save()) {
+            abort(500, "Saving failed");
+        }
+        $attendee = Attendee::with('seat')->find($id);
+        return $attendee;
     }
 
     /**
@@ -96,5 +113,16 @@ class AttendeeController extends Controller
     {
         $attendee = Attendee::find($id);
         $attendee->delete();
+    }
+
+    public function assignedAuctionItems()
+    {
+        return Attendee::with('item','seat')->get();
+
+    }
+
+    public function sendCheckOutEmail($id)
+    {
+        abort(500, "Saving Fuck");
     }
 }

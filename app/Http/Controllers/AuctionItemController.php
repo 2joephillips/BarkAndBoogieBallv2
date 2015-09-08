@@ -23,7 +23,7 @@ class AuctionItemController extends Controller
      */
     public function index()
     {
-        return AuctionItem::all();
+        return AuctionItem::with('attendee.seat')->get();
     }
 
     /**
@@ -88,9 +88,12 @@ class AuctionItemController extends Controller
         $item->auctionValue = $this->request->input('auctionValue');
         $item->auctionDonor = $this->request->input('auctionDonor');
         $item->auctionNotes = $this->request->input('auctionNotes');
+        $item->attendee_id = $this->request->input('attendee_id');
+        $item->winningBid = $this->request->input('winningBid');
         if (!$item->save()) {
             abort(500, "Saving failed");
         }
+        $item = AuctionItem::with('attendee.seat')->find($id);
         return $item;
         /*$data = Request::all();
         $item->fill($data);
