@@ -12,7 +12,7 @@
 <body ng-app="todoApp" ng-controller="MainController" ng-init="getAuthenticatedUser()">
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
+    <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
                 <span class="sr-only">Toggle navigation</span>
@@ -24,11 +24,11 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li ng-class="{active:isActive('/todos')}"><a href="/todos">Home</a></li>
+                <li ng-class="{active:isActive('/todos')}"><a href="/todos">Todos</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Manage <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="/auctionItems">Auction Items</a></li>
+                        <li><a href="/auctionitems">Auction Items</a></li>
                         <li class="divider"></li>
                         <li><a href="/attendees">Attendees</a></li>
                         <!-- <li class="divider"></li>
@@ -36,7 +36,7 @@
                     </ul>s
                 </li>
                 <li ng-class="{active:isActive('/checkin')}"><a href="/checkin">Check In/Out    </a></li>
-                <li ng-class="{active:isActive('/assignauctionitems')}"><a href="/assignauctionitems">Assign Auction Items</a></li>
+                <li ng-class="{active:isActive('/assignauctionitems')}"><a href="/assignauctionitems">Assign Items</a></li>
             </ul>
             <ul class="nav navbar-nav pull-right">
                 <li ng-if="authenticatedUser == null" ng-class="{active:isActive('/auth/signup')}"><a href="/auth/signup">Sign Up</a></li>

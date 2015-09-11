@@ -25,19 +25,17 @@ class EmailController extends Controller
      */
     public function index()
     {
-        abort(500, 'Fuck this Shit');
+        abort(500);
     }
 
     public function show($id)
     {
         $attendee = Attendee::with('seat','item')->find($id);
-        $total = 0;
 
         $Msgdata = array(
             'name'=>$attendee->firstname,
             'email'=>$attendee->email,
-            'items'=>$attendee->item,
-            'total'=>$total
+            'items'=>$attendee->item
         );
 
         Mail::send('emails.test',

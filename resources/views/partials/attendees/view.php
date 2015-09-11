@@ -2,7 +2,7 @@
     <div class="row">
         <h1>Attendee {{ attendee.firstname }} {{attendee.lastname }}
             <a class="btn btn-small btn-success" href="/attendees">List of Attendees</a>
-            <a ng-href="/attendee/edit/{{attendee.id}}" class="btn btn-small btn-info"><i class="fa fa-edit"></i>Edit</a>
+            <a ng-href="/attendees/edit/{{attendee.id}}" class="btn btn-small btn-info"><i class="fa fa-edit"></i>Edit</a>
         </h1>
     </div>
     <hr>
