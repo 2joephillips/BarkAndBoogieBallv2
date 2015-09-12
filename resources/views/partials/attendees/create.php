@@ -137,7 +137,4 @@
 
         </fieldset>
     </form>
-    <pre>
-        {{ seat| json }}
-    </pre>
 </div>

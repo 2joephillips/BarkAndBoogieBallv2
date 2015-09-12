@@ -16,11 +16,14 @@
                            ng-blur="update(todo)" enter-stroke="update(todo)">
                 </div>
                 <br>
-                <div class="form-group">
-                    <div class="col-md-5">
-                        <a class="btn btn-small btn-primary" href="/todos/create">Add Todo</a>
-                    </div>
-                </div>
+
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-5">
+                <a class="btn btn-small btn-primary" href="/todos/create">Add Todo</a>
             </div>
         </div>
     </div>
