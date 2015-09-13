@@ -40774,7 +40774,7 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', '
   function ($routeProvider, $locationProvider, $httpProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: '/partials/checkin',
+        templateUrl: '/partials/home',
         controller: 'MainController'
       })
       .when('/:category/:action?/:id?', {
