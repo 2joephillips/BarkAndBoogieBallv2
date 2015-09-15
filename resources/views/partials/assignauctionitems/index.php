@@ -36,11 +36,20 @@
                     <td>
                             <input class="form-control input-md" id="winningBid" fcsa-number name="winningBid" type="text"  placeholder="100"
                                    ng-model="item.winningBid" value="var|currency" ng-required="true" min="1">
-                        </div>
                     </td>
                     <td>
-                         <input class="form-control input-md" id="winningBid" name="attendee_id" type="text"  placeholder="100"
-                        ng-model="item.attendee.seat.auctionId">
+                        <angucomplete-alt id="ex1"
+                                          placeholder="Enter AuctionId"
+                                          pause="100"
+                                          selected-object="selectedAuctionId"
+                                          local-data="attendees"
+                                          search-fields="seat.auctionId"
+                                          title-field="seat.auctionId"
+                                          minlength="1"
+                                          input-class="form-control form-control-small"
+                                          match-class="highlight"
+                                          field-required="true"
+                                          initial-value="item.attendee.seat.auctionId"/>
                     </td>
                     <td>
                         <a class="btn btn-small btn-success" ng-click="update(item)"><i class="fa fa-refresh"></i>Update</a>
@@ -52,7 +61,6 @@
                 </tbody>
             </table>
         </div>
-
         <dir-pagination-controls></dir-pagination-controls>
     </div>
 

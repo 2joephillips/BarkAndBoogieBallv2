@@ -17,7 +17,9 @@ elixir(function (mix) {
       'app.less'
     )
     .styles([
-      'style.css'
+      'style.css',
+          'angucomplete-alt.css',
+          'toastr.min.css'
     ])
     .scripts([
       'libs/**/*.js',
@@ -30,6 +32,8 @@ elixir(function (mix) {
           'dirPagination.js',
           'ui-bootstrap.js',
           'ui-bootstrap-tpls.js',
+          'angucomplete-alt.js',
+          'toastr.js'
 
     ])
     .version([

@@ -25,6 +25,7 @@ angular.module('todoApp', [
     'ui.bootstrap',
     'ModalService',
     'SendEmailService',
-    'excludeValue'
+    'excludeValue',
+    'angucomplete-alt'
 ]);
 
