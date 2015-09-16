@@ -14,6 +14,19 @@ angular.module('CheckinController', []).controller('CheckinController', ['$scope
             });
         }
 
+        $scope.findOne = function () {
+            var splitPath = $location.path().split('/');
+            var personId = splitPath[splitPath.length - 1];
+            $scope.attendee = Attendee.get({personId: personId}).$promise.then(function(){
+                attendee.item.foreach(
+                    $scope.totalWinningBid = 
+                )
+            });
+
+
+        };
+
+
         function checkin(attendee) {
             for (var i = 0; i < $scope.attendees.length; i++) {
                 if ($scope.attendees[i].id == attendee.id) {
@@ -50,7 +63,8 @@ angular.module('CheckinController', []).controller('CheckinController', ['$scope
 
         function checkout(attendee){
             var attendeeId = attendee.id;
-            SendEmail.get({attendeeId: attendeeId});
+            attendee.checkedOut = 1;
+           // SendEmail.get({attendeeId: attendeeId});
         }
     }
 ]);

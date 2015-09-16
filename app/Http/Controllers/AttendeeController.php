@@ -24,7 +24,7 @@ class AttendeeController extends Controller
      */
     public function index()
     {
-        return Attendee::with('seat')->get();
+        return Attendee::with('seat','item')->get();
     }
 
     /**
@@ -60,7 +60,7 @@ class AttendeeController extends Controller
      */
     public function show($id)
     {
-        $attendee = Attendee::with('seat')->find($id);
+        $attendee = Attendee::with('seat','item')->find($id);
         return $attendee;
     }
 

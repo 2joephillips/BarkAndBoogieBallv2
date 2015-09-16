@@ -31,13 +31,16 @@
                 </thead>
                 <tbody>
                 <tr dir-paginate="item in items | filter:search:strict | itemsPerPage: 25">
-                    <td>{{ item.itemId }}</td>
-                    <td>{{ item.nameOfActionItem | limitTo: 25}}{{item.nameOfActionItem.length > 25 ? '...' : ''}}</td>
-                    <td>
+                    <td class="col-md-1">{{ item.itemId }}</td>
+                    <td class="col-md-5">{{ item.nameOfActionItem | limitTo: 25}}{{item.nameOfActionItem.length > 25 ? '...' : ''}}</td>
+                    <td class="col-md-2">
+                        <div class="input-group">
+                            <span class="input-group-addon">$</span>
                             <input class="form-control input-md" id="winningBid" fcsa-number name="winningBid" type="text"  placeholder="100"
                                    ng-model="item.winningBid" value="var|currency" ng-required="true" min="1">
+                            </div>
                     </td>
-                    <td>
+                    <td class="col-md-2">
                         <angucomplete-alt id="ex1"
                                           placeholder="Enter AuctionId"
                                           pause="100"
