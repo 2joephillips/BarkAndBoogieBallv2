@@ -17,13 +17,7 @@ angular.module('CheckinController', []).controller('CheckinController', ['$scope
         $scope.findOne = function () {
             var splitPath = $location.path().split('/');
             var personId = splitPath[splitPath.length - 1];
-            $scope.attendee = Attendee.get({personId: personId}).$promise.then(function(){
-                attendee.item.foreach(
-                    $scope.totalWinningBid = 
-                )
-            });
-
-
+            $scope.attendee = Attendee.get({personId: personId});
         };
 
 
