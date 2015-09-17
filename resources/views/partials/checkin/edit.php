@@ -32,6 +32,5 @@
         </div>
 
     </div>
-    {{ attendee | json }}
 </div>
 

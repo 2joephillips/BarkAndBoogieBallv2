@@ -64,7 +64,7 @@
         </div>
         <dir-pagination-controls></dir-pagination-controls>
     </div>
-    {{ attendees | json }}
+
 </div>
 
 
