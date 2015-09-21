@@ -41073,6 +41073,7 @@ angular.module('CheckinController', []).controller('CheckinController', ['$scope
         $scope.balanceDue = "";
         $scope.checkin = checkin;
         $scope.checkout = checkout;
+        $scope.totalbids = 0;
 
         $scope.find = function () {
             Attendee.assignedAuctionItems().$promise.then(function(data) {
@@ -41085,7 +41086,13 @@ angular.module('CheckinController', []).controller('CheckinController', ['$scope
         $scope.findOne = function () {
             var splitPath = $location.path().split('/');
             var personId = splitPath[splitPath.length - 1];
-            $scope.attendee = Attendee.get({personId: personId});
+           Attendee.get({personId: personId}).$promise.then(function(data){
+              $scope.attendee = data;
+               angular.forEach( $scope.attendee.item, function(item){
+                       $scope.totalbids += parseInt(item.winningBid);
+                   }
+               )
+           });
         };
 
 

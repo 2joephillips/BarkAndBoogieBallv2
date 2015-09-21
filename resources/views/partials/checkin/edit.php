@@ -28,9 +28,13 @@
                 </tr >
                 </tbody>
             </table>
-
         </div>
-
+        <h3>Total Due: ${{ totalbids }}</h3>
     </div>
+    <div class="pull-right">
+        <button class="btn btn-primary" ng-print print-element-id="printThisElement"><i class="fa fa-print"></i> Print Receipt</button>
+        <button class="btn btn-primary" ><i class="fa fa-envelope"></i> Email Receipt</button>
+    </div>
+
 </div>
 
