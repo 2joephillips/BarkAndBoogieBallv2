@@ -26,6 +26,7 @@ angular.module('todoApp', [
     'ModalService',
     'SendEmailService',
     'excludeValue',
-    'angucomplete-alt'
+    'angucomplete-alt',
+    'AngularPrint'
 ]);
 

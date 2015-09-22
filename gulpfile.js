@@ -19,7 +19,8 @@ elixir(function (mix) {
     .styles([
       'style.css',
           'angucomplete-alt.css',
-          'toastr.min.css'
+          'toastr.min.css',
+          'angularPrint.css'
     ])
     .scripts([
       'libs/**/*.js',
