@@ -1,9 +1,9 @@
 
-<div ng-controller="CheckinController" ng-init="findOne()">
+<div ng-controller="CheckinController" ng-init="findOne()" >
     <br>
     <br>
     <br>
-    <div class="row">
+    <div class="row" print-section>
         <h1>Receipt</h1>
         <h3>HSFC Bark & Boogie Ball 2015</h3>
         <h4>Receipt For: {{ attendee.firstname }} {{ attendee.lastname }}</h4>
@@ -31,10 +31,15 @@
         </div>
         <h3>Total Due: ${{ totalbids }}</h3>
     </div>
-    <div class="pull-right">
-        <button class="btn btn-primary" ng-print print-element-id="printThisElement"><i class="fa fa-print"></i> Print Receipt</button>
-        <button class="btn btn-primary" ><i class="fa fa-envelope"></i> Email Receipt</button>
+    <div class="row">
+        <div class="pull-left" print-remove>
+            <button class="btn btn-danger" ng-click=""><i class="fa fa-credit-card"></i> Money Collected</button>
+        </div>
+        <div ng-if="attendee.checkedOut"class="pull-right" print-remove>
+            <button class="btn btn-primary" print-btn><i class="fa fa-print"></i> Print Receipt</button>
+            <button class="btn btn-primary" ><i class="fa fa-envelope"></i> Email Receipt</button>
+        </div>
     </div>
-
+    {{ attendee | json }}
 </div>
 
