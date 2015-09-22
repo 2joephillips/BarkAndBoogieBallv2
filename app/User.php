@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Hash;
 
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract
 {
-
     use Authenticatable, CanResetPassword;
 
     /**

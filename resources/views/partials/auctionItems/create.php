@@ -16,7 +16,7 @@
 
                     </label>
                      <input class="form-control input-md" id="itemId" name="itemId" placeholder="EX. A01, J22"
-                           ng-model="itemId" ng-required="true">
+                           ng-model="itemId" required="true">
                          <span style="color:red" ng-show="createForm.itemId.$dirty && createForm.itemId.$invalid">
                               * ID Required
                           </span>
@@ -28,7 +28,7 @@
                         Name of Item:
                     </label>
                     <input class="form-control input-md" id="nameOfActionItem" name="nameOfActionItem" type="text" placeholder="Really Nice Item"
-                           ng-model="nameOfActionItem" required>
+                           ng-model="nameOfActionItem" required="true">
                         <span style="color:red" ng-show="createForm.nameOfActionItem.$dirty && createForm.nameOfActionItem.$invalid && createForm.nameOfActionItem.$error.required">
                               * Name Required
                         </span>
@@ -40,8 +40,8 @@
                         Enter Description:
                     </label>
                     <textarea class="form-control input-md" rows="5" id="auctionDescription" name="auctionDescription" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vel felis eu purus molestie sagittis."
-                            ng-model="auctionDescription" required="true"></textarea>
-                        <span style="color:red" ng-show="createForm.auctionDescription.$dirty && createForm.auctionDescription.$invalid && createForm.auctionDescription.$error.required">
+                            ng-model="auctionDescription"></textarea>
+                        <span style="color:red" ng-show="createForm.auctionDescription.$dirty && createForm.auctionDescription.$invalid">
                               * Name Required
                         </span>
                 </div>
@@ -54,7 +54,7 @@
                     <div class="input-group">
                         <span class="input-group-addon">$</span>
                     <input class="form-control input-md" id="auctionValue" fcsa-number name="auctionValue" type="text"  placeholder="100"
-                           ng-model="auctionValue" value="var|currency" ng-required="true" min="1">
+                           ng-model="auctionValue" value="var|currency" required="true" min="1">
                     </div>
                         <span style="color:red" ng-show="createForm.auctionValue.$dirty && createForm.auctionValue.$invalid && createForm.auctionValue.$error.required">
                               * Value Required:
@@ -71,7 +71,7 @@
                         Enter Donor:
                     </label>
                     <input class="form-control input-md" id="auctionDonor" name="auctionDonor" type="text" placeholder="John Doe"
-                           ng-model="auctionDonor" ng-required="true">
+                           ng-model="auctionDonor">
                 </div>
             </div>
             <div class="form-group">

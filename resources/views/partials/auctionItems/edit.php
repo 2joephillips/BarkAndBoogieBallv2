@@ -11,7 +11,6 @@
                 <div class="col-md-10">
                     <h5>
                         Name of Item:
-
                     </h5>
                     <input class="form-control input-md" id="nameOfActionItem" name="nameOfActionItem" type="text" placeholder="Name of Item"
                            ng-model="item.nameOfActionItem" required>
