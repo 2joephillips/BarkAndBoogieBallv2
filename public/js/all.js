@@ -41073,7 +41073,9 @@ angular.module('CheckinController', []).controller('CheckinController', ['$scope
         $scope.selection = [];
         $scope.balanceDue = "";
         $scope.checkin = checkin;
-        $scope.checkout = checkout;
+        $scope.checkOut = checkOut;
+        $scope.checkItems = checkItems;
+        $scope.sendEmail = sendEmail;
         $scope.totalbids = 0;
 
         $scope.find = function () {
@@ -41095,7 +41097,6 @@ angular.module('CheckinController', []).controller('CheckinController', ['$scope
                )
            });
         };
-
 
         function checkin(attendee) {
             for (var i = 0; i < $scope.attendees.length; i++) {
@@ -41131,11 +41132,42 @@ angular.module('CheckinController', []).controller('CheckinController', ['$scope
             }
         }
 
-        function checkout(attendee){
-            var attendeeId = attendee.id;
-            attendee.checkedOut = 1;
-           // SendEmail.get({attendeeId: attendeeId});
+        function checkItems(attendee) {
+            if (attendee.item.length > 0) {
+                $location.path('/checkin/edit/' + attendee.id);
+            }
+            else {
+                var modalOptions = {
+                    closeButtonText: 'Cancel',
+                    actionButtonText: 'Ok',
+                    headerText: 'No items won during the bidding',
+                    bodyText: 'No balance due for ' + attendee.firstname + ' ' + attendee.lastname + '.'
+                };
+                Modal.showModal({}, modalOptions).then( function(result) {
+                    attendee.checkedOut = 1;
+                    attendee.$update(function (res) {
+                        $location.path('checkin/')
+                    });
+                })
+            }
         }
+
+        function checkOut(attendee){
+            attendee.checkedOut = 1;
+            attendee.$update(function(res){
+                toastr.success('Checked Out ' + attendee.firstname + ' ' + attendee.lastname + '.')
+                toastr.success('Receipt can be printed or emailed.')
+                $location.path('/checkin/edit/' + attendee.id);
+            })
+        }
+
+        function sendEmail(attendee) {
+            var attendeeId = attendee.id;
+            SendEmail.get({attendeeId: attendeeId});
+            toastr.success('Receipt has been emailed.')
+
+        }
+
     }
 ]);
 angular.module('MainController', []).controller('MainController', ['$scope', '$location', '$localStorage', 'User',

@@ -95,10 +95,7 @@ class AuctionItemController extends Controller
         }
         $item = AuctionItem::with('attendee.seat')->find($id);
         return $item;
-        /*$data = Request::all();
-        $item->fill($data);
-        $item->save();
-        return $item;*/
+
     }
 
     /**

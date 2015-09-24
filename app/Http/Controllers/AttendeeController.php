@@ -121,8 +121,5 @@ class AttendeeController extends Controller
 
     }
 
-    public function sendCheckOutEmail($id)
-    {
-        abort(500, "Saving Fuck");
-    }
+
 }

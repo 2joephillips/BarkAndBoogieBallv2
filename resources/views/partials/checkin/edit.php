@@ -33,13 +33,12 @@
     </div>
     <div class="row">
         <div class="pull-left" print-remove>
-            <button class="btn btn-danger" ng-click=""><i class="fa fa-credit-card"></i> Money Collected</button>
+            <button class="btn btn-danger" ng-click="checkOut(attendee)"><i class="fa fa-credit-card"></i> Money Collected</button>
         </div>
         <div ng-if="attendee.checkedOut"class="pull-right" print-remove>
             <button class="btn btn-primary" print-btn><i class="fa fa-print"></i> Print Receipt</button>
-            <button class="btn btn-primary" ><i class="fa fa-envelope"></i> Email Receipt</button>
+            <button class="btn btn-primary" ng-click="sendEmail(attendee)"><i class="fa fa-envelope"></i> Email Receipt</button>
         </div>
     </div>
-    {{ attendee | json }}
 </div>
 

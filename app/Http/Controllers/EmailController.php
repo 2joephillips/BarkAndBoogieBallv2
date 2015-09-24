@@ -42,5 +42,7 @@ class EmailController extends Controller
             $Msgdata,
              function($message) use ($attendee) {$message->to($attendee->email)->subject('Bark and Boogie Ball Receipt:');
          });
+
+        return $attendee;
     }
 }

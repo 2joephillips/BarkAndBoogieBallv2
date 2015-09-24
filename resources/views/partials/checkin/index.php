@@ -52,7 +52,7 @@
                     <td>{{ attendee.seat.seat_number }}</td>
                     <td>
                         <a class="btn btn-small btn-success" ng-click="checkin(attendee)"ng-if="attendee.checkedIn == 0"><i class="fa fa-sign-in"></i>Check-In</a>
-                        <a class="btn btn-small btn-info" ng-href="/checkin/edit/{{attendee.id}}" ng-if="attendee.checkedIn == 1 && attendee.checkedOut == 0"><i class="fa fa-sign-out"></i>Check-Out</a>
+                        <a class="btn btn-small btn-info" ng-click="checkItems(attendee)" ng-if="attendee.checkedIn == 1 && attendee.checkedOut == 0"><i class="fa fa-sign-out"></i>Check-Out</a>
                         <a class="btn btn-small btn-warning" ng-href="/checkin/edit/{{attendee.id}}" ng-if="attendee.checkedIn == 1 && attendee.checkedOut == 1"><i class="fa fa-sign-out"></i>Checked-Out</a>
                         <a n
                     </td>
