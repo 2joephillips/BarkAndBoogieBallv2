@@ -99,7 +99,7 @@ class AttendeeController extends Controller
         if (!$attendee->save()) {
             abort(500, "Saving failed");
         }
-        $attendee = Attendee::with('seat')->find($id);
+        $attendee = Attendee::with('seat','item')->find($id);
         return $attendee;
     }
 
