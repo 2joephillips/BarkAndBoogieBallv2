@@ -40,5 +40,6 @@
             <button class="btn btn-primary" ng-click="sendEmail(attendee)"><i class="fa fa-envelope"></i> Email Receipt</button>
         </div>
     </div>
+    {{ attendee | json }}
 </div>
 

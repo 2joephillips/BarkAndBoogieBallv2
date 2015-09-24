@@ -7,7 +7,7 @@
     Below is the receipt for the item(s) you won:
 </p>
 
-    @foreach ($items->all() as $item)
+
         <table border="1" align="left">
             <thead>
             <tr>
@@ -17,14 +17,16 @@
             </tr>
             </thead>
             <tbody>
+            @foreach ($items->all() as $item)
             <tr>
                 <td><% $item->itemId %></td>
                 <td><% $item->nameOfActionItem %></td>
                 <td>$<% $item->winningBid %></td>
             </tr>
+            @endforeach
             </tbody>
         </table>
-    @endforeach
+
 
 
 <p>

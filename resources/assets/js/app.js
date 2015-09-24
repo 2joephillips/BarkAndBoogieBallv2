@@ -14,6 +14,7 @@ angular.module('todoApp', [
     'UpdateSeatController',
     'CheckinController',
     'AssignAuctionItemsController',
+    'ConfirmEmailController',
   'UserService',
   'TodoService',
     'AuctionItemService',
@@ -27,6 +28,8 @@ angular.module('todoApp', [
     'SendEmailService',
     'excludeValue',
     'angucomplete-alt',
-    'AngularPrint'
+    'AngularPrint',
+
+
 ]);
 

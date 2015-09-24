@@ -1,5 +1,5 @@
-angular.module('CheckinController', []).controller('CheckinController', ['$scope', '$http', '$location', '$routeParams', 'Attendee', 'Modal', 'SendEmail',
-    function ($scope, $http, $location, $routeParams, Attendee, Modal, SendEmail) {
+angular.module('CheckinController', []).controller('CheckinController', ['$scope', '$http', '$location', '$routeParams', '$modal', 'Attendee', 'Modal', 'SendEmail',
+    function ($scope, $http, $location, $routeParams, $modal, Attendee, Modal, SendEmail) {
 
         $scope.selection = [];
         $scope.balanceDue = "";
@@ -93,9 +93,27 @@ angular.module('CheckinController', []).controller('CheckinController', ['$scope
         }
 
         function sendEmail(attendee) {
-            var attendeeId = attendee.id;
-            SendEmail.get({attendeeId: attendeeId});
-            toastr.success('Receipt has been emailed.')
+
+            var modalInstance = $modal.open({
+                animation: true,
+                templateUrl: '/partials/checkin/confirmEmail',
+                controller: 'ConfirmEmailController',
+                size: 'lg',
+                resolve: {
+                    attendee: function() {
+                        return $scope.attendee;
+                    }
+                }
+            })
+
+            modalInstance.result.then(function () {
+                attendee.$update(function(res) {
+                    var attendeeId = attendee.id;
+                    SendEmail.get({attendeeId: attendeeId});
+                    toastr.success('Receipt has been emailed.')
+                    $location.path('checkin/')
+                })
+            });
 
         }
 
