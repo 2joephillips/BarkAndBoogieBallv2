@@ -27,7 +27,7 @@
             </tbody>
         </table>
 
-
+    <h1>PAID IN FULL</h1>
 
 <p>
 
