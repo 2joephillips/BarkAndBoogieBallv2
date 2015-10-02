@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call('UploadAuctionItemSeeder');
         $this->call('UploadTableSeeder');
         $this->call('UploadAttendeesSeeder');
+        Model::reguard();
     }
 }
 
@@ -93,7 +94,7 @@ class UploadTableSeeder extends Seeder
                 $this->command->info("Added Auction Id for seat and table" . $row[2]);
             });
 
-        $fileName = $this->getDir() . '/TableSeating.csv';
+        $fileName = $this->getDir() . '/Seats.csv';
         $lexer->parse($fileName, $interpreter);
     }
 }
@@ -115,13 +116,14 @@ class UploadAttendeesSeeder extends Seeder
             function (array $row) use ($Attendees) {
                 $ItemOne = \Todo\Attendee::create(
                     array(
-                        'company' 		=> $row[1],
-                        'lastname' 		=> $row[2],
-                        'firstname' 	=> $row[3],
-                        'phone' 		=> $row[4],
-                        'email' 		=> $row[5],
-                        'paidinfull' 	=> $row[6],
-                        'notes' 		=> $row[7]
+                        'company' 		=> $row[0],
+                        'lastname' 		=> $row[1],
+                        'firstname' 	=> $row[2],
+                        'phone' 		=> $row[3],
+                        'email' 		=> $row[4],
+                        'paidinfull' 	=> $row[5],
+                        'notes' 		=> $row[6],
+                        'seat_id'       => $row[7]
                     )
                 );
                 $this->command->info("Added " . $row[1] . "item and attached to attendee");
