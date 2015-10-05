@@ -40834,18 +40834,20 @@ angular.module('AssignAuctionItemsController', []).controller('AssignAuctionItem
       $scope.selectedAuctionId = function(selected) {
           if(selected){
 
-              $scope.items[$scope.itemId].attendee_id = selected.originalObject.id;
+              $scope.items[$scope.indexOfItem].attendee_id = selected.originalObject.id;
           }
       }
 
       $scope.focusIn = function(item) {
-            $scope.itemId = item.id;
+
+            $scope.indexOfItem = $scope.items.indexOf(item);
       }
 
       $scope.update = function (auctionitem) {
-          auctionitem.$update(function (res) {
+          var item = $scope.items[$scope.indexOfItem]
+          item.$update(function (res) {
               $location.path('assignauctionitems/')
-              toastr.success(auctionitem.itemId + ' Updated')
+              toastr.success(item.itemId + ' Updated')
           });
       };
 

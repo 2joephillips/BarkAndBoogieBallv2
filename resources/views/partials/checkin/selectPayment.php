@@ -6,15 +6,18 @@
     <form name="paymentForm" class="form-horizontal" novalidate>
         <fieldset>
     <label>
-        Email:
+        Enter Payment Type:
     </label>
             <div class="input-group">
                 <div class="btn-group">
-                    <label class="btn btn-primary" ng-model="attendee.checkNumber"  btn-radio="Cash">Cash</label>
-                    <label class="btn btn-primary" ng-model="attendee.checkNumber"  btn-radio="Check">Check</label>
-                    <label class="btn btn-primary" ng-model="attendee.checkNumber"  btn-radio="Credit">Credit</label>
+                    <label class="btn btn-primary" ng-model="attendee.paymentType"  btn-radio="'Cash'">Cash</label>
+                    <label class="btn btn-primary" ng-model="attendee.paymentType"  btn-radio="'Check'">Check</label>
+                    <label class="btn btn-primary" ng-model="attendee.paymentType"  btn-radio="'Credit'">Credit</label>
                 </div>
             </div>
+            <label>
+                Enter Check Number (if applicable):
+            </label>
     <input class="form-control input-md" type="checkNumber" id="checkNumber" name="checkNumber" placeholder="1234"
            ng-model="attendee.checkNumber" ng-required="true">
                          <span style="color:red" ng-show="paymentForm.checkNumber.$dirty && paymentForm.checkNumber.$invalid">

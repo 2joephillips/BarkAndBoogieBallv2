@@ -96,6 +96,8 @@ class AttendeeController extends Controller
         $attendee->seat_id = $this->request->input('seat_id');
         $attendee->checkedIn = $this->request->input('checkedIn');
         $attendee->checkedOut = $this->request->input('checkedOut');
+        $attendee->paymentType = $this->request->input('paymentType');
+        $attendee->checkNumber = $this->request->input('checkNumber');
         if (!$attendee->save()) {
             abort(500, "Saving failed");
         }
