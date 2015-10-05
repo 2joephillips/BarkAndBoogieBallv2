@@ -51,6 +51,7 @@
                                           minlength="1"
                                           input-class="form-control form-control-small"
                                           match-class="highlight"
+                                          focus-in="focusIn(item)"
                                           field-required="true"
                                           initial-value="item.attendee.seat.auctionId"/>
                     </td>

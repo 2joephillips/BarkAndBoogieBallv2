@@ -84,12 +84,28 @@ angular.module('CheckinController', []).controller('CheckinController', ['$scope
         }
 
         function checkOut(attendee){
-            attendee.checkedOut = 1;
-            attendee.$update(function(res){
-                toastr.success('Checked Out ' + attendee.firstname + ' ' + attendee.lastname + '.')
-                toastr.success('Receipt can be printed or emailed.')
-                $location.path('/checkin/edit/' + attendee.id);
+
+            var modalInstance = $modal.open({
+                animation: true,
+                templateUrl: '/partials/checkin/selectPayment',
+                controller: 'SelectPaymentController',
+                size: 'lg',
+                resolve: {
+                    attendee: function() {
+                        return $scope.attendee;
+                    }
+                }
             })
+
+            modalInstance.result.then(function() {
+                attendee.checkedOut = 1;
+                attendee.$update(function(res){
+                    toastr.success('Checked Out ' + attendee.firstname + ' ' + attendee.lastname + '.')
+                    toastr.success('Receipt can be printed or emailed.')
+                    $location.path('/checkin/edit/' + attendee.id);
+                })
+            });
+
         }
 
         function sendEmail(attendee) {

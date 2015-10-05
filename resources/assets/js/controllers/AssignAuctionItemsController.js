@@ -8,10 +8,14 @@ angular.module('AssignAuctionItemsController', []).controller('AssignAuctionItem
 
       $scope.selectedAuctionId = function(selected) {
           if(selected){
-              $scope.items[this.$parent.$index].attendee_id = selected.originalObject.id;
+
+              $scope.items[$scope.itemId].attendee_id = selected.originalObject.id;
           }
       }
 
+      $scope.focusIn = function(item) {
+            $scope.itemId = item.id;
+      }
 
       $scope.update = function (auctionitem) {
           auctionitem.$update(function (res) {

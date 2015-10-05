@@ -15,6 +15,7 @@ angular.module('todoApp', [
     'CheckinController',
     'AssignAuctionItemsController',
     'ConfirmEmailController',
+    'SelectPaymentController',
   'UserService',
   'TodoService',
     'AuctionItemService',
