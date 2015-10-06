@@ -30,6 +30,11 @@
             </table>
         </div>
         <h3>Total Due: ${{ totalbids }}</h3>
+
+        <div ng-if="attendee.checkedOut">
+            <h3>PAID IN FULL</h3>
+        </div>
+
     </div>
     <div class="row">
         <div class="pull-left" print-remove>
