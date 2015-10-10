@@ -127,7 +127,7 @@ class UploadAttendeesSeeder extends Seeder
                         'seat_id'       => $row[8]
                     )
                 );
-                $this->command->info("Added " . $row[1] . "item and attached to attendee");
+                $this->command->info("Added " . $row[1] . "as an attendee");
             }
         );
         $fileName = $this->getDir() . '/Attendees.csv';
