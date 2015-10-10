@@ -23,7 +23,7 @@ class AuctionItemController extends Controller
      */
     public function index()
     {
-        return AuctionItem::with('attendee.seat')->get();
+        return AuctionItem::with('attendee.seat')->orderBy('itemId')->get();
     }
 
     /**
