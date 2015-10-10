@@ -122,8 +122,9 @@ class UploadAttendeesSeeder extends Seeder
                         'phone' 		=> $row[3],
                         'email' 		=> $row[4],
                         'paidinfull' 	=> $row[5],
-                        'notes' 		=> $row[6],
-                        'seat_id'       => $row[7]
+                        'balance'       => $row[6],
+                        'notes' 		=> $row[7],
+                        'seat_id'       => $row[8]
                     )
                 );
                 $this->command->info("Added " . $row[1] . "item and attached to attendee");
