@@ -49,7 +49,7 @@
                         Phone Number:
                     </label>
                     <input class="form-control input-md" id="phone" name="phone" input-phone min="10" placeholder="(123)4567890"
-                           ng-model="attendee.phone" ng-required="true">
+                           ng-model="attendee.phone">
                          <span style="color:red" ng-show="createForm.phone.$dirty && createForm.phone.$invalid">
                               * Required
                           </span>
@@ -59,7 +59,7 @@
                         Email:
                     </label>
                     <input class="form-control input-md" type="email" id="email" name="email" placeholder="john.doe@info.com"
-                           ng-model="attendee.email" ng-required="true">
+                           ng-model="attendee.email" >
                          <span style="color:red" ng-show="createForm.email.$dirty && createForm.email.$invalid">
                               * Required
                           </span>
