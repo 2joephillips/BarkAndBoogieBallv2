@@ -24,7 +24,8 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li  ng-if="authenticatedUser == null"ng-class="{active:isActive('/todos')}"><a href="/todos">Todos</a></li>
+                <!--
+                <li  ng-if="authenticatedUser == null" ng-class="{active:isActive('/todos')}"><a href="/todos">Todos</a></li>
                 <li ng-if="authenticatedUser == null" class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Manage <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
@@ -32,8 +33,8 @@
                         <li class="divider"></li>
                         <li><a href="/attendees">Attendees</a></li>
                         <!-- <li class="divider"></li>
-                        <li><a href="/seats">Seats</a></li> -->
-                    </ul>s
+                        <li><a href="/seats">Seats</a></li>
+                    </ul>
                 </li>
                 <li ng-if="authenticatedUser == null" ng-class="{active:isActive('/checkin')}"><a href="/checkin">Check In/Out    </a></li>
                 <li ng-if="authenticatedUser == null" ng-class="{active:isActive('/assignauctionitems')}"><a href="/assignauctionitems">Assign Items</a></li>
@@ -45,7 +46,7 @@
                 <li ng-if="authenticatedUser != null" ng-class="{active:isActive('/users/view/' + authenticatedUser.id)}"><a ng-href="/users/view/{{authenticatedUser.id}}">{{authenticatedUser.username}}</a></li>
                 <li ng-if="authenticatedUser != null" ng-click="logout()"><a ng-href="#">Log out</a></li>
             </ul>
-
+-->
         </div>
     </div>
 </nav>
